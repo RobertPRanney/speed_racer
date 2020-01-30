@@ -13,8 +13,8 @@ from tf_agents.specs import array_spec
 from tf_agents.environments import py_environment
 from tf_agents.trajectories import time_step as ts
 
-from game import Game
-import constants
+from .game import Game
+from . import constants
 
 
 tf.compat.v1.enable_v2_behavior()

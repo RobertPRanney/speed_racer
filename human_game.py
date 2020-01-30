@@ -9,8 +9,8 @@ import time
 
 import pygame
 
-import constants
-from game import Game
+from speed_racer import constants
+from speed_racer.game import Game
 
 
 def play_game():

@@ -11,8 +11,8 @@ import math
 
 import pygame
 
-import colors
-import constants
+from . import colors
+from . import constants
 
 
 # CONSTANT DECLARATIONS
@@ -21,17 +21,18 @@ CAR_SCALE_DIMS = (150, 75)
 CAR_NAME = "s_car"
 SENSOR_NAMES = ['up', 'forward', 'down']
 
+MODULE_DIR = '/'.join(os.path.abspath(__file__).split('/')[:-1])
+CAR_IMG = pygame.transform.scale(pygame.image.load(f"{MODULE_DIR}/imgs/{CAR_NAME}_none.png"), CAR_SCALE_DIMS)
 
-CAR_IMG = pygame.transform.scale(pygame.image.load(os.path.join("imgs", f"{CAR_NAME}_none.png")), CAR_SCALE_DIMS)
+
 
 class Sensor:
     sensor_max = constants.SENSOR_MAX
 
     def  __init__(self, name):
         self.name = name
-        self.img = pygame.transform.scale(pygame.image.load(os.path.join("imgs", f"s_car_sensor_{self.name}.png")), CAR_SCALE_DIMS)
-        self.orig_img = pygame.transform.scale(pygame.image.load(os.path.join("imgs", f"s_car_sensor_{self.name}.png")), CAR_SCALE_DIMS)
-        self.mask = pygame.mask.from_surface(self.img, 50)
+        self.img = pygame.transform.scale(pygame.image.load(f"{MODULE_DIR}/imgs/{CAR_NAME}_sensor_{self.name}.png"), CAR_SCALE_DIMS)
+        self.orig_img = pygame.transform.scale(pygame.image.load(f"{MODULE_DIR}/imgs/{CAR_NAME}_sensor_{self.name}.png"), CAR_SCALE_DIMS)
         self.overlap = None
         self.dist = self.sensor_max
         self.active = 0

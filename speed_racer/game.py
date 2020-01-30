@@ -9,10 +9,10 @@ Notes:
 # IMPORT STATMENTS
 import pygame
 
-import colors
-import constants
-from car import Car
-from track import Track
+from . import colors
+from . import constants
+from .car import Car
+from .track import Track
 
 pygame.init()
 
@@ -24,9 +24,9 @@ class Game:
         self.car = Car(*self.track.car_start_point)
         self.frame = 0
         self.last_reward = 0
+        self.is_finished = False
         self.drawing = drawing
         self.displaying = displaying
-        self.is_finished = False
 
         if self.drawing:
             self.screen = pygame.display.set_mode(self.screen_size)
@@ -53,7 +53,7 @@ class Game:
     def step(self, action):
         self.car.move(action)
         self.car.update_sensors(self.track)
-        self.last_reward = self._get_reward()
+        self.last_reward = self._get_reward(action, self.car)
         self.car.score += self.last_reward
         self.frame += 1
 
@@ -72,7 +72,7 @@ class Game:
         return self.last_reward
 
 
-    def _get_reward(self):
+    def _get_reward(self, action, car):
         if self.track.collided(self.car):
             self.car.crash()
             reward = -50
@@ -88,6 +88,7 @@ class Game:
         else:
             self.car.in_finish_area = False
             reward = -0.01
+        reward += car.vel / 100
         return reward
 
 
@@ -114,6 +115,9 @@ class Game:
 
     def restart_game(self):
         self.car.reset()
+        self.frame = 0
+        self.last_reward = 0
+        self.is_finished = False
 
 
     def render(self):

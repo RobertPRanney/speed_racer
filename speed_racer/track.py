@@ -11,14 +11,15 @@ from statistics import median
 
 import pygame
 
-import constants
-import colors
+from . import constants
+from . import colors
 
+MODULE_DIR = '/'.join(os.path.abspath(__file__).split('/')[:-1])
 
 class Track:
     def __init__(self, screen_size):
-        self.img = pygame.transform.scale(pygame.image.load(os.path.join("imgs", 'track_outline.png')), screen_size)
-        self.img_display = pygame.transform.scale(pygame.image.load(os.path.join("imgs", 'track_fill.png')), screen_size)
+        self.img = pygame.transform.scale(pygame.image.load(f'{MODULE_DIR}/imgs/track_outline.png'), screen_size)
+        self.img_display = pygame.transform.scale(pygame.image.load(f'{MODULE_DIR}/imgs/track_fill.png'), screen_size)
         self.mask = pygame.mask.from_surface(self.img)
         self.rect = self.img.get_rect()
         self._find_finish()
