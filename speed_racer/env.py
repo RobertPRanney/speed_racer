@@ -21,8 +21,9 @@ tf.compat.v1.enable_v2_behavior()
 
 
 class SpeedRacer(py_environment.PyEnvironment):
-    def __init__(self):
-        self.game = Game(drawing=False, displaying=False)
+    def __init__(self,track_name):
+        self.track_name = track_name
+        self.game = Game(track_name, drawing=False, displaying=False)
         self._action_spec = array_spec.BoundedArraySpec(
             shape=(), dtype=np.int64, minimum=0, maximum=4, name='action')
         self._observation_spec = array_spec.BoundedArraySpec(

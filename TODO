@@ -1,7 +1,6 @@
 2) Make action an array of selected actions
 15) Tests
 18) chart
-20) Make second track
 21) Prettier Track
 22) Finish a trainer example
 24) Test if can watch agent - Seems like a no
@@ -9,3 +8,7 @@
 27) Use standard metrics instead of built
 29) Use driver instead of built
 30) Readme
+31) get pygments set up
+32) Make third/fourth Track
+33) start curriculum demo
+34) start cloning demo

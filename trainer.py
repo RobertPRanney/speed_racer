@@ -57,8 +57,8 @@ if __name__ == '__main__':
     agent_name = f"{env_name}-rl-{num_iterations / 1000:.0f}k-{network_name}-{fc_layer_params[0]}-{n_step_update}n"
     print(f"Training {agent_name}")
 
-    train_py_env = SpeedRacer()
-    eval_py_env = SpeedRacer()
+    train_py_env = SpeedRacer('hard')
+    eval_py_env = SpeedRacer('hard')
 
     train_env = tf_py_environment.TFPyEnvironment(train_py_env)
     eval_env = tf_py_environment.TFPyEnvironment(eval_py_env)

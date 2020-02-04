@@ -17,9 +17,10 @@ from . import colors
 MODULE_DIR = '/'.join(os.path.abspath(__file__).split('/')[:-1])
 
 class Track:
-    def __init__(self, screen_size):
-        self.img = pygame.transform.scale(pygame.image.load(f'{MODULE_DIR}/imgs/track_outline.png'), screen_size)
-        self.img_display = pygame.transform.scale(pygame.image.load(f'{MODULE_DIR}/imgs/track_fill.png'), screen_size)
+    def __init__(self, screen_size, name):
+        self.track_name = name
+        self.img = pygame.transform.scale(pygame.image.load(f'{MODULE_DIR}/imgs/tracks/{self.track_name}/track_outline.png'), screen_size)
+        self.img_display = pygame.transform.scale(pygame.image.load(f'{MODULE_DIR}/imgs/tracks/{self.track_name}/track_fill.png'), screen_size)
         self.mask = pygame.mask.from_surface(self.img)
         self.rect = self.img.get_rect()
         self._find_finish()

@@ -18,9 +18,9 @@ pygame.init()
 
 
 class Game:
-    def __init__(self, drawing=False, displaying=False):
+    def __init__(self, track_name, drawing=False, displaying=False):
         self.screen_size = (constants.TRACK_AREA_WIDTH, constants.TRACK_AREA_HEIGHT)
-        self.track = Track(self.screen_size)
+        self.track = Track(self.screen_size, track_name)
         self.car = Car(*self.track.car_start_point)
         self.frame = 0
         self.last_reward = 0
